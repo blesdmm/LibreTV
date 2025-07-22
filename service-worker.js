@@ -21,8 +21,8 @@ async function handleAddUser(request) {
     // 定义 SQL 查询
     const query = `INSERT INTO users (username, password, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)`;
     
-    // 连接 D1 数据库并执行查询（确保您替换 D1_DATABASE_NAME）
-    const db = await D1_DATABASE_NAME.prepare(query);
+    // 使用您的数据库名称 libretv
+    const db = await libretv.prepare(query);
     await db.bind(username, password).run(); // 绑定参数并运行查询
 
     return new Response('User added successfully', { status: 200 });
